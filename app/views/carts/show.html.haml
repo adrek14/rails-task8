@@ -1,0 +1,20 @@
+=render "shared/navigation"
+%h2 Cart
+%table
+  %tr
+    %td name
+    %td price
+    %td quantity
+    %td sum
+  - @items.each do |it|
+    %tr
+      %td{ :style => "border: 1px solid;" }= it.product.name
+      %td{ :style => "border: 1px solid;" }= it.product.price
+      %td{ :style => "border: 1px solid;" }= it.quantity
+      %td{ :style => "border: 1px solid;" }= it.quantity*it.product.price
+      %td
+        %p{ :style => "margin: 0 1px; display: inline;" }= link_to "-", product_rm_path( it.product )
+        %p{ :style => "margin: 0 1px; display: inline;" } 
+        %p{ :style => "margin: 0 1px; display: inline;" }= link_to "+", product_add_path( it.product )
+%hr
+%p= link_to "Proceed to checkout >>", checkout_cart_path

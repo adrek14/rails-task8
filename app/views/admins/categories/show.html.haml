@@ -1,0 +1,8 @@
+= render "admins/shared/panel"
+%table{ :style => "border: 1px solid" }
+  - @category.products.each do |p|
+    %tr
+      %td{ :style => "border: 1px solid"}= p.name
+      %td{ :style => "border: 1px solid" }= p.price
+%hr
+%p= link_to "Add a product", new_admins_category_product_path( @category )

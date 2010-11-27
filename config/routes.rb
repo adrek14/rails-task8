@@ -1,4 +1,45 @@
 RailsTask8::Application.routes.draw do
+  devise_for :admins
+  devise_for :users
+
+  root :to => "welcome#index"
+
+  resources :categories do
+    resources :products
+  end
+
+  resources :users do
+    resource :cart do
+      resources :products do
+        get "add" => "cart#add"
+      end
+    end
+  end
+
+  match 'users/:id/cart' => 'carts#show', :as => :cart
+
+  resource :cart do
+    get "checkout" => "carts#checkout"
+    put "summary" => "carts#summary"
+    get "summary" => "carts#summary"
+    get "order" => "carts#order"
+    resources :products do
+      get "add" => "carts#add"
+      get "rm" => "carts#rm"
+    end
+  end
+
+  # resources :admins do
+  #   resource :panel
+  # end
+
+  namespace :admins do
+    resources :orders
+    resources :categories
+  end
+
+  # resources :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

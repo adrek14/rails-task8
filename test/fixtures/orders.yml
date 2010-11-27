@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  date_placed: 2010-11-27
+  confirmation: false
+  payment: false
+
+two:
+  user_id: 1
+  date_placed: 2010-11-27
+  confirmation: false
+  payment: false

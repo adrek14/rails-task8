@@ -1,0 +1,14 @@
+%p{ :style => "display: inline;" }=link_to "Categories", "/"
+- if user_signed_in?
+  %p{ :style => "display: inline;"}= link_to "Cart", cart_path( )
+- if admin_signed_in?
+  %p{ :style => "display: inline;"}= link_to "Admin Panel", admins_categories_path
+#user_nav{ :style => "float: right;" }
+  - if user_signed_in?
+    %p{ :style => "display: inline;" }= "Welcome " + current_user.username.capitalize + "!"
+    %p{ :style => "display: inline;" }= link_to "Logout", destroy_user_session_path
+  - else
+    %p{ :style => "display: inline;" }= link_to "Login", new_user_session_path
+    %p{ :style => "display: inline;" } /
+    %p{ :style => "display: inline;" }= link_to "Admin Login", new_admin_session_path
+%hr

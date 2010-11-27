@@ -1,0 +1,10 @@
+=render "shared/navigation"
+%h2= @category.name
+%p
+%table
+  - @category.products.each do |p|
+    %tr
+      %td= link_to p.name, category_product_path( p )
+      %td= "$" + p.price.to_s
+      %td= link_to "(add to cart)", product_add_path( p )
+

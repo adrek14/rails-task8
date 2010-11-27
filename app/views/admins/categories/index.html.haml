@@ -1,0 +1,5 @@
+= render "admins/shared/panel"
+- @categories.each do |c|
+  %p= link_to c.name, admins_category_path( c )
+%hr
+%p= link_to "Add a category", new_admins_category_path

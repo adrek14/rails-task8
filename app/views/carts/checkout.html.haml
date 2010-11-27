@@ -1,0 +1,32 @@
+=render "shared/navigation"
+%h2 Checkout
+%table
+  %tr
+    %td name
+    %td price
+    %td quantity
+    %td sum
+  - @items.each do |it|
+    %tr
+      %td{ :style => "border: 1px solid;" }= it.product.name
+      %td{ :style => "border: 1px solid;" }= it.product.price
+      %td{ :style => "border: 1px solid;" }= it.quantity
+      %td{ :style => "border: 1px solid;" }= it.quantity*it.product.price
+%hr
+%h3 Please review your postal data
+- form_for @cart, :url => { :action => "summary" } do |f|
+  #leftAddr{ :style => "float: left; margin: 0 6px;" }
+    %p= f.label "Street", :street
+    %p= f.text_field :street, :value => @cart.street 
+    %p= f.label "City", :city
+    %p= f.text_field :city, :value => @cart.city 
+  #rightAddr{ :style => "float: left; margin: 0 6px;" }
+    %p= f.label "Zip code", :zipcode
+    %p= f.text_field :zipcode, :value => @cart.zipcode 
+    %p= f.label "Country", :country
+    %p= f.text_field :country, :value => @cart.country 
+  #clear{ :style => "clear: both;"}
+    %p= f.submit "View order summary", :action => "summary"
+%hr
+%p{ :style => "margin: 0 2px; display: inline;" }= link_to "<< back to cart", cart_path
+

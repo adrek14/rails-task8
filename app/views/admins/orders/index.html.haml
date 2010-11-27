@@ -1,0 +1,18 @@
+= render "admins/shared/panel"
+%table
+  %tr
+    %td confirmation
+    %td payment
+    %td street
+    %td city
+    %td country
+  - @orders.each do |o|
+    %tr
+      - #%td{ :style => "border: 1px solid;" }= o.user.username
+      - #%td{ :style => "border: 1px solid;" }= o.date
+      %td{ :style => "border: 1px solid;" }= o.user
+      %td{ :style => "border: 1px solid;" }= o.confirmation
+      %td{ :style => "border: 1px solid;" }= o.payment
+      %td{ :style => "border: 1px solid;" }= o.street
+      %td{ :style => "border: 1px solid;" }= o.zipcode + o.city
+      %td{ :style => "border: 1px solid;" }= o.country

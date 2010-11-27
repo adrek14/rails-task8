@@ -1,0 +1,5 @@
+=render "admins/shared/panel"
+- form_for [ :admins, @category ] do |f|
+  %p= f.label "name", :name
+  %p= f.text_field :name
+  %p= f.submit "Submit"

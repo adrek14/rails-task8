@@ -1,0 +1,10 @@
+=render "shared/navigation"
+- if flash[:notice]
+  #flash{:style => "border: 1px solid;"}
+    %h3= flash[:notice]
+%h3 Welcome to the Empty store
+%p Here you can supply urself with nothing... in infinite quantities! Totally 4 free!
+%p
+%p Feel free to browse our crap:
+- @categories.each do |c|
+  %p= link_to c.name, category_path( c )
