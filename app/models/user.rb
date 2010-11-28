@@ -13,12 +13,4 @@ class User < ActiveRecord::Base
   has_one :cart
   has_many :orders
 
-  def get_cart_items
-      if self.cart == nil
-        []
-      else
-        self.cart.items
-      end 
-  end
-
 end

@@ -3,13 +3,18 @@ class CartsController < ApplicationController
   before_filter :authenticate_user!
 
   def show
-      @items = current_user.get_cart_items
+      Cart.create( :user => current_user )  if current_user.cart == nil
+      @items = current_user.cart.items
   end
 
   def add
-      current_user.cart = Cart.new  if (@cart = current_user.cart ) == nil     
+      if current_user.cart == nil
+          @cart = Cart.create( :user => current_user )
+      else
+          @cart = current_user.cart
+      end
       @product = Product.find( params[:product_id] )
-      current_user.cart.add_item( 1, @product )
+      @cart.add_item( 1, @product )
       redirect_to cart_path
   end
 
@@ -21,14 +26,14 @@ class CartsController < ApplicationController
   end
 
   def checkout
-      @items = current_user.get_cart_items
+      @items = current_user.cart.items
       @cart = current_user.cart
   end
 
   def summary
       @cart = current_user.cart
       @cart.update_attributes!( params[:cart] )
-      @items = current_user.get_cart_items
+      @items = current_user.cart.items
       if @cart.save
           render "carts/summary"
       else

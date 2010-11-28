@@ -1,0 +1,35 @@
+=render "admins/shared/panel"
+%h3 Order
+%table
+  %tr
+    %td username
+    %td first name
+    %td last name
+    %td confirmation
+    %td payment
+    %td street
+    %td city
+    %td country
+  %tr
+    %td{ :style => "border: 1px solid;" }= @order.user.username
+    %td{ :style => "border: 1px solid;" }= @order.firstname
+    %td{ :style => "border: 1px solid;" }= @order.lastname
+    %td{ :style => "border: 1px solid;" }= @order.confirmation
+    %td{ :style => "border: 1px solid;" }= @order.payment
+    %td{ :style => "border: 1px solid;" }= @order.street
+    %td{ :style => "border: 1px solid;" }= @order.zipcode + @order.city
+    %td{ :style => "border: 1px solid;" }= @order.country
+%h3 Details
+%table
+  %tr
+    %td name
+    %td price
+    %td quantity
+    %td sum
+  - @items.each do |it|
+    %tr
+      %td{ :style => "border: 1px solid;" }= it.product.name
+      %td{ :style => "border: 1px solid;" }= it.product.price
+      %td{ :style => "border: 1px solid;" }= it.quantity
+      %td{ :style => "border: 1px solid;" }= it.quantity*it.product.price
+

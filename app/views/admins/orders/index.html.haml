@@ -1,6 +1,9 @@
 = render "admins/shared/panel"
 %table
   %tr
+    %td username
+    %td first name
+    %td last name
     %td confirmation
     %td payment
     %td street
@@ -8,11 +11,12 @@
     %td country
   - @orders.each do |o|
     %tr
-      - #%td{ :style => "border: 1px solid;" }= o.user.username
-      - #%td{ :style => "border: 1px solid;" }= o.date
-      %td{ :style => "border: 1px solid;" }= o.user
+      %td{ :style => "border: 1px solid;" }= o.user.username
+      %td{ :style => "border: 1px solid;" }= o.firstname
+      %td{ :style => "border: 1px solid;" }= o.lastname
       %td{ :style => "border: 1px solid;" }= o.confirmation
       %td{ :style => "border: 1px solid;" }= o.payment
       %td{ :style => "border: 1px solid;" }= o.street
       %td{ :style => "border: 1px solid;" }= o.zipcode + o.city
       %td{ :style => "border: 1px solid;" }= o.country
+      %td= link_to "details", admins_order_path( o )

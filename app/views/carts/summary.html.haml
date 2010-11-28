@@ -16,9 +16,9 @@
 %p We're running short on time, funds & programmers, so take a calc and sum it all up yourself (Casio oldschool style, baby!). Be precise, add $10 standard flat shipping rate. And don't forget to tip well.
 %hr
 %h3 Postal data
+%p= @cart.firstname + " " + @cart.lastname
 %p= @cart.street
-%p{ :style => "display: inline;" }= @cart.zipcode
-%p{ :style => "display: inline;" }= @cart.city
+%p= @cart.zipcode + " " + @cart.city
 %p= @cart.country
 %hr
 %p{ :style => "margin: 0 2px; display: inline;" }= link_to "<< back to checkout", checkout_cart_path

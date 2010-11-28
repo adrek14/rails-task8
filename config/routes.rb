@@ -35,7 +35,9 @@ RailsTask8::Application.routes.draw do
 
   namespace :admins do
     resources :orders
-    resources :categories
+    resources :categories do
+      resources :products
+    end
   end
 
   # resources :users

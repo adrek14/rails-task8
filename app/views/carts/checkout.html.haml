@@ -16,11 +16,15 @@
 %h3 Please review your postal data
 - form_for @cart, :url => { :action => "summary" } do |f|
   #leftAddr{ :style => "float: left; margin: 0 6px;" }
+    %p= f.label "First name", :firstname
+    %p= f.text_field :firstname, :value => @cart.firstname 
+    %p= f.label "Last name", :lastname
+    %p= f.text_field :lastname, :value => @cart.lastname 
     %p= f.label "Street", :street
     %p= f.text_field :street, :value => @cart.street 
+  #rightAddr{ :style => "float: left; margin: 0 6px;" }
     %p= f.label "City", :city
     %p= f.text_field :city, :value => @cart.city 
-  #rightAddr{ :style => "float: left; margin: 0 6px;" }
     %p= f.label "Zip code", :zipcode
     %p= f.text_field :zipcode, :value => @cart.zipcode 
     %p= f.label "Country", :country
